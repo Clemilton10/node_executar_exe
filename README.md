@@ -49,4 +49,36 @@ npm install -g nodemon --save-dev
 yarn install
 ```
 
+### exe1.js
+
+```js
+const { exec } = require('child_process');
+const command = `"bash" "C:\\users\\clemas\\desktop\\klemas.sh"`;
+exec(command, (error, stdout, stderr) => {
+	if (error) {
+		console.error(`Erro ao executar o comando: ${error.message}`);
+		return;
+	}
+	if (stderr) {
+		console.error(`Erro padrão do processo filho: ${stderr}`);
+		return;
+	}
+	console.log(`Saída padrão do processo filho: ${stdout}`);
+});
+```
+
+### exe2.js
+
+```js
+const { spawn } = require('child_process');
+const exePath = 'C:\\xampp\\xampp-control.exe';
+const args = [];
+const options = {
+	detached: true,
+	stdio: 'ignore'
+};
+const child = spawn(exePath, args, options);
+child.unref();
+```
+
 | [Home](./README.md) | [Vs Code](./002_vs-code.md) | [Comandos Git](./004_git.md) | [Extensões Chrome](./003_extensoes_chrome.md) |
